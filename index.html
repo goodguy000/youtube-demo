@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"
+    />
+    <title>Youtube machine</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <button
+        class="btn waves-effect waves-light"
+        id="youtube-link"
+        type="submit"
+        name="action"
+      >
+        GET Link
+        <i class="material-icons right"></i>
+      </button>
+    </div>
+
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const copyToClipboard = str => {
+        const el = document.createElement("textarea");
+        el.value = str;
+        el.setAttribute("readonly", "");
+        el.style.position = "absolute";
+        el.style.left = "-9999px";
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand("copy");
+        document.body.removeChild(el);
+      };
+      const myArray = [
+        "https://www.youtube.com/watch?v=oGbAL4N2-Hk",
+        "https://www.youtube.com/watch?v=G1iTNEggsiY",
+        "https://www.youtube.com/watch?v=amyZqBlhTZM",
+        "https://www.youtube.com/watch?v=xZuE02A5t5g"
+      ];
+      $("#youtube-link").click(() => {
+        const rand = myArray[Math.floor(Math.random() * myArray.length)];
+        copyToClipboard(rand);
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  </body>
+</html>
